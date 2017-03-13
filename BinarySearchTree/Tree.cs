@@ -57,5 +57,54 @@ namespace BinarySearchTree
             while (!added);
         }
 
+
+        //public bool SearchTree(int value)
+        //{
+        //    Node node = top;
+
+        //    while (node != null)
+        //    {
+        //        if (node.value == value)
+        //        {
+        //            return true;
+        //        }
+        //        else if (node.value < value)
+        //        {
+        //            node = node.right;
+        //            return SearchTree(value);
+        //        }
+        //        else if (node.value > value)
+        //        {
+        //            node = node.left;
+        //            return SearchTree(value);
+        //        }
+        //    } 
+        //    return false;
+        //}
+        public void Search(int value)
+        {
+            Node node = top;
+            SearchTree(node, value);
+        }
+
+        public bool SearchTree(Node node, int value)
+        {
+            while (node != null)
+            {
+                if (node.value == value)
+                {
+                    return true;
+                }
+                else if (node.value > value)
+                {
+                    return SearchTree(node.left, value);
+                }
+                else if (node.value < value)
+                {
+                    return SearchTree(node.right, value);
+                }
+            }
+            return false;
+        }
     }
 }
